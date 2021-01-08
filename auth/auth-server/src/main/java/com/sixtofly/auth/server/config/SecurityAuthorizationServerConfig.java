@@ -1,7 +1,9 @@
 package com.sixtofly.auth.server.config;
 
 import com.sixtofly.auth.common.entity.SecurityUser;
+import com.sixtofly.auth.server.config.token.granter.CustomTokenGranter;
 import com.sixtofly.auth.server.exception.SecurityExceptionTranslator;
+import com.sixtofly.auth.server.service.PhoneDetailsService;
 import com.sixtofly.auth.server.service.impl.WebUserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;
@@ -50,6 +52,8 @@ public class SecurityAuthorizationServerConfig extends AuthorizationServerConfig
     private WebUserDetailsServiceImpl webUserDetailsService;
     @Autowired
     private DataSource dataSource;
+    @Autowired
+    private PhoneDetailsService phoneDetailsService;
 
 //    @Autowired
 //    private JwtAccessTokenConverter jwtAccessTokenConverter;
@@ -84,6 +88,12 @@ public class SecurityAuthorizationServerConfig extends AuthorizationServerConfig
                 // 配置JWT令牌
 //                .accessTokenConverter(jwtAccessTokenConverter)
                 .reuseRefreshTokens(false)
+                // 配置自定义授权模式
+                .tokenGranter(
+                        new CustomTokenGranter(endpoints).authenticationManager(authenticationManager)
+                        .phoneDetailsService(phoneDetailsService)
+                        .build()
+                )
         ;
     }
 
