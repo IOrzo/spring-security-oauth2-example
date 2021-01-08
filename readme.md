@@ -24,6 +24,23 @@ provider -> 基础服务模块(为上层应用提供服务) <br/>
 地址改为自己服务器地址
 3. 依次启动base、auth-server、web服务
 
+#### 数据说明
+##### mysql
+
+six_base_user -> 用户表, 用户密码均为admin <br/>
+oauth_client_details -> oauth2客户端表, 客户端密码均为web <br/>
+
+#### 接口测试
+
+* 密码登录
+http://127.0.0.1:8812/oauth/token?username=admin&password=admin&grant_type=password&scope=web&client_id=web&client_secret=web
+
+* 授权码模式
+浏览器中访问http://127.0.0.1:8812/oauth/authorize?response_type=code&redirect_uri=https://www.baidu.com&client_id=web <br/>
+在登录页面中输入账户密码, 会跳转到百度页面, 地址栏上会返回code, 如: https://www.baidu.com/?code=1OOpOg <br/>
+根据code请求token, http://127.0.0.1:8812/oauth/token?code=1OOpOg&redirect_uri=https://www.baidu.com&grant_type=authorization_code&scope=web&client_id=web&client_secret=web <br/>
+注: 若使用Baisc认证, 请求参数中可不带client_id和client_secret, 这里是方便测试
+
 
 #### 自定义授权模式(自定义登录逻辑)
 
