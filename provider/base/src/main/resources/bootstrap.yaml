@@ -1,0 +1,24 @@
+dubbo:
+  scan:
+    base-packages: com.sixtofly.provider.base.service
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: spring-cloud://localhost
+  cloud:
+    subscribed-services: " "
+# Dubbo 应用名称
+spring:
+  application:
+    name: base
+  main:
+    # Spring Boot 2.1 需要设定
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      # Nacos 服务发现与注册配置
+      discovery:
+#        server-addr: 49.232.153.28:8848
+        # server-addr: 47.93.239.109:8848
+         server-addr: 127.0.0.1:8848

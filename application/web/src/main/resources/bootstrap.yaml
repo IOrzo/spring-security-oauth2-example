@@ -1,0 +1,37 @@
+dubbo:
+  registry:
+    #   The Spring Cloud Dubbo's registry extension
+    ##  the default value of dubbo-provider-services is "*", that means to subscribe all providers,
+    ##  thus it's optimized if subscriber specifies the required providers.
+    # 挂载到 Spring Cloud 注册中心
+    address: spring-cloud://localhost
+#   The traditional Dubbo's registry also is supported
+#   address: zookeeper://127.0.0.1:2181
+  cloud:
+    # The subscribed services in consumer side
+    # 用于服务消费方订阅服务提供方的应用名称的列表，若需订阅多应用，使用 "," 分割
+    # 不推荐使用默认值为 "*"，它将订阅所有应用。
+    # 当应用使用属性 dubbo.cloud.subscribed-services 默认值时，日志中将会输出一行警告：
+    # Current application will subscribe all services(size:x) in registry, a lot of memory and CPU cycles may be used,
+    # thus it's strongly recommend you using the externalized property 'dubbo.cloud.subscribed-services' to specify the services
+    subscribed-services: "base"
+# Dubbo 应用名称
+spring:
+  application:
+    name: web
+  main:
+    # Spring Boot 2.1 需要设定
+    allow-bean-definition-overriding: true
+  # default disable all
+  cloud:
+    # Nacos 服务发现与注册配置
+    nacos:
+      discovery:
+        enabled: true
+        register-enabled: true
+        server-addr: 127.0.0.1:8848
+#        server-addr: 49.232.153.28:8848
+logging:
+  file: ${spring.application.name}
+  path: /logs
+#  level: info

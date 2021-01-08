@@ -1,0 +1,9 @@
+server:
+  port: 6001
+swagger:
+   basic:
+     enable: true
+     username: admin
+     password: admin
+
+

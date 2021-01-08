@@ -1,0 +1,16 @@
+# 与认证服务器配置连接地址保持一致
+spring:
+  redis:
+    host: 47.93.239.109
+    port: 6379
+    password: sixsixsix.........
+    database: 0
+  datasource:
+      url: jdbc:mysql://47.93.239.109:3306/oauth?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+      username: root
+      password: sixtofly
+      hikari:
+        maximum-pool-size: 10
+        minimum-idle: 5
+        # 5分钟
+        idle-timeout: 300000
