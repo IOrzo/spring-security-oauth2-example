@@ -32,6 +32,11 @@ oauth_client_details -> oauth2客户端表, 客户端密码均为web <br/>
 
 #### 接口测试
 
+* 应用服务Swagger
+地址: http://127.0.0.1:6001/doc.html <br/>
+账号: admin <br />
+密码: admin <br />
+
 * 密码登录
 http://127.0.0.1:8812/oauth/token?username=admin&password=admin&grant_type=password&scope=web&client_id=web&client_secret=web
 

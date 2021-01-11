@@ -1,7 +1,6 @@
 package com.sixtofly.application.web.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.sixtofly.auth.common.entity.SecurityUser;
 import com.sixtofly.auth.common.entity.UserInfo;
 import com.sixtofly.auth.common.util.SecurityUtil;
 import io.jsonwebtoken.Claims;

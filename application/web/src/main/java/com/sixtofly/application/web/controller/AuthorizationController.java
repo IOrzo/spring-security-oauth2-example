@@ -58,4 +58,12 @@ public class AuthorizationController {
     public String hasRole() {
         return "success";
     }
+
+
+    @ApiOperation("自定义权限校验")
+    @GetMapping("/custom")
+    @PreAuthorize("@ps.hasPermission(@ps.ZDYQX)")
+    public String custom() {
+        return "success";
+    }
 }

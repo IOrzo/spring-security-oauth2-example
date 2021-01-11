@@ -58,4 +58,14 @@ public class ResourceServerAutoConfiguration {
 //        expressionHandler.setApplicationContext(applicationContext);
 //        return expressionHandler;
 //    }
+
+
+    /**
+     * 自定义权限校验
+     * @return
+     */
+    @Bean
+    public PermissionService ps() {
+        return new PermissionService();
+    }
 }
